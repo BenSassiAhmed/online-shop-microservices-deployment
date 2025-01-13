@@ -5,7 +5,7 @@ pipeline{
             steps{
                 script {
                     sh "kubectl get nodes"
-                    sh "kubectl create -f k8s-config/config-basic.yaml"
+                    sh "kubectl create -f k8s-config/config.yaml"
                     sh "sleep 15"
                     sh "kubectl get deploy,svc"
                 }
