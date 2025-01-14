@@ -1,6 +1,6 @@
 appName: frontend
-appImage: gcr.io/google-samples/microservices-demo/frontend
-appVersion: v0.2.3
+appImage: bensassiahmed/frontend
+appVersion: "1"
 appReplicas: 2
 containerPort: 8080
 containerEnvVars:
@@ -19,7 +19,7 @@ containerEnvVars:
 - name: CHECKOUT_SERVICE_ADDR
   value: "checkoutservice:5050"
 - name: AD_SERVICE_ADDR
-  value: "adservice:9555"    
+  value: "adservice:9555"
 
 servicePort: 80
 serviceType: LoadBalancer
