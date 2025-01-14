@@ -12,6 +12,7 @@ pipeline{
                     sh "kubectl get nodes"
                     sh "chmod +x install.sh"
                     sh "./install.sh"
+                    // sh "helmfile sync" better option than running the shell script 
                     sh "helm ls"
                     sh "kubectl get deploy,svc"
                     sh "kubectl get pod"
