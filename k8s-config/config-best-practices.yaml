@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/emailservice:v0.2.3
+        image: bensassiahmed/emailservice:1
         ports:
         - containerPort: 8080
         env:
@@ -23,15 +23,15 @@ spec:
         - name: DISABLE_TRACING
           value: "1"
         - name: DISABLE_PROFILER
-          value: "1"  
+          value: "1"
         readinessProbe:
           periodSeconds: 5
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:8080"]
+            command: [ "/bin/grpc_health_probe", "-addr=:8080" ]
         livenessProbe:
           periodSeconds: 5
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:8080"]
+            command: [ "/bin/grpc_health_probe", "-addr=:8080" ]
         resources:
           requests:
             cpu: 100m
@@ -52,7 +52,6 @@ spec:
   - protocol: TCP
     port: 5000
     targetPort: 8080
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -69,17 +68,17 @@ spec:
     spec:
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/recommendationservice:v0.2.3
+        image: bensassiahmed/recommendationservice:1
         ports:
         - containerPort: 8080
         readinessProbe:
           periodSeconds: 5
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:8080"]
+            command: [ "/bin/grpc_health_probe", "-addr=:8080" ]
         livenessProbe:
           periodSeconds: 5
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:8080"]
+            command: [ "/bin/grpc_health_probe", "-addr=:8080" ]
         env:
         - name: PORT
           value: "8080"
@@ -90,7 +89,7 @@ spec:
         - name: DISABLE_PROFILER
           value: "1"
         - name: DISABLE_DEBUGGER
-          value: "1"  
+          value: "1"
         resources:
           requests:
             cpu: 100m
@@ -111,7 +110,6 @@ spec:
   - protocol: TCP
     port: 8080
     targetPort: 8080
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -136,10 +134,10 @@ spec:
           value: "50051"
         readinessProbe:
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:50051"]
+            command: [ "/bin/grpc_health_probe", "-addr=:50051" ]
         livenessProbe:
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:50051"]
+            command: [ "/bin/grpc_health_probe", "-addr=:50051" ]
         resources:
           requests:
             cpu: 100m
@@ -160,7 +158,6 @@ spec:
   - protocol: TCP
     port: 50051
     targetPort: 50051
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -177,7 +174,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/productcatalogservice:v0.2.3
+        image: bensassiahmed/productcatalogservice:1
         ports:
         - containerPort: 3550
         env:
@@ -185,10 +182,10 @@ spec:
           value: "3550"
         readinessProbe:
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:3550"]
+            command: [ "/bin/grpc_health_probe", "-addr=:3550" ]
         livenessProbe:
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:3550"]
+            command: [ "/bin/grpc_health_probe", "-addr=:3550" ]
         resources:
           requests:
             cpu: 100m
@@ -209,7 +206,6 @@ spec:
   - protocol: TCP
     port: 3550
     targetPort: 3550
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -234,10 +230,10 @@ spec:
           value: "7000"
         readinessProbe:
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:7000"]
+            command: [ "/bin/grpc_health_probe", "-addr=:7000" ]
         livenessProbe:
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:7000"]
+            command: [ "/bin/grpc_health_probe", "-addr=:7000" ]
         resources:
           requests:
             cpu: 100m
@@ -258,7 +254,6 @@ spec:
   - protocol: TCP
     port: 7000
     targetPort: 7000
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -275,7 +270,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/shippingservice:v0.2.3
+        image: bensassiahmed/shippingservice:1
         ports:
         - containerPort: 50051
         env:
@@ -284,10 +279,10 @@ spec:
         readinessProbe:
           periodSeconds: 5
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:50051"]
+            command: [ "/bin/grpc_health_probe", "-addr=:50051" ]
         livenessProbe:
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:50051"]
+            command: [ "/bin/grpc_health_probe", "-addr=:50051" ]
         resources:
           requests:
             cpu: 100m
@@ -308,7 +303,6 @@ spec:
   - protocol: TCP
     port: 50051
     targetPort: 50051
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -325,7 +319,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/adservice:v0.2.3
+        image: bensassiahmed/adservice:1.0
         ports:
         - containerPort: 9555
         env:
@@ -342,12 +336,12 @@ spec:
           initialDelaySeconds: 20
           periodSeconds: 15
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:9555"]
+            command: [ "/bin/grpc_health_probe", "-addr=:9555" ]
         livenessProbe:
           initialDelaySeconds: 20
           periodSeconds: 15
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:9555"]
+            command: [ "/bin/grpc_health_probe", "-addr=:9555" ]
 ---
 apiVersion: v1
 kind: Service
@@ -361,7 +355,6 @@ spec:
   - protocol: TCP
     port: 9555
     targetPort: 9555
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -378,7 +371,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/cartservice:v0.2.3
+        image: bensassiahmed/cartservice:1
         ports:
         - containerPort: 7070
         env:
@@ -394,12 +387,12 @@ spec:
         readinessProbe:
           initialDelaySeconds: 15
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
+            command: [ "/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s" ]
         livenessProbe:
           initialDelaySeconds: 15
           periodSeconds: 10
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
+            command: [ "/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s" ]
 ---
 apiVersion: v1
 kind: Service
@@ -413,7 +406,6 @@ spec:
   - protocol: TCP
     port: 7070
     targetPort: 7070
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -429,38 +421,38 @@ spec:
         app: checkoutservice
     spec:
       containers:
-        - name: server
-          image: gcr.io/google-samples/microservices-demo/checkoutservice:v0.2.3
-          ports:
-          - containerPort: 5050
-          readinessProbe:
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:5050"]
-          livenessProbe:
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:5050"]
-          env:
-          - name: PORT
-            value: "5050"
-          - name: PRODUCT_CATALOG_SERVICE_ADDR
-            value: "productcatalogservice:3550"
-          - name: SHIPPING_SERVICE_ADDR
-            value: "shippingservice:50051"
-          - name: PAYMENT_SERVICE_ADDR
-            value: "paymentservice:50051"
-          - name: EMAIL_SERVICE_ADDR
-            value: "emailservice:5000"
-          - name: CURRENCY_SERVICE_ADDR
-            value: "currencyservice:7000"
-          - name: CART_SERVICE_ADDR
-            value: "cartservice:7070"
-          resources:
-            requests:
-              cpu: 100m
-              memory: 64Mi
-            limits:
-              cpu: 200m
-              memory: 128Mi
+      - name: server
+        image: bensassiahmed/checkoutservice:1
+        ports:
+        - containerPort: 5050
+        readinessProbe:
+          exec:
+            command: [ "/bin/grpc_health_probe", "-addr=:5050" ]
+        livenessProbe:
+          exec:
+            command: [ "/bin/grpc_health_probe", "-addr=:5050" ]
+        env:
+        - name: PORT
+          value: "5050"
+        - name: PRODUCT_CATALOG_SERVICE_ADDR
+          value: "productcatalogservice:3550"
+        - name: SHIPPING_SERVICE_ADDR
+          value: "shippingservice:50051"
+        - name: PAYMENT_SERVICE_ADDR
+          value: "paymentservice:50051"
+        - name: EMAIL_SERVICE_ADDR
+          value: "emailservice:5000"
+        - name: CURRENCY_SERVICE_ADDR
+          value: "currencyservice:7000"
+        - name: CART_SERVICE_ADDR
+          value: "cartservice:7070"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
 ---
 apiVersion: v1
 kind: Service
@@ -474,7 +466,6 @@ spec:
   - protocol: TCP
     port: 5050
     targetPort: 5050
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -490,50 +481,50 @@ spec:
         app: frontend
     spec:
       containers:
-        - name: server
-          image: gcr.io/google-samples/microservices-demo/frontend:v0.2.3
-          ports:
-          - containerPort: 8080
-          readinessProbe:
-            initialDelaySeconds: 10
-            httpGet:
-              path: "/_healthz"
-              port: 8080
-              httpHeaders:
-              - name: "Cookie"
-                value: "shop_session-id=x-readiness-probe"
-          livenessProbe:
-            initialDelaySeconds: 10
-            httpGet:
-              path: "/_healthz"
-              port: 8080
-              httpHeaders:
-              - name: "Cookie"
-                value: "shop_session-id=x-liveness-probe"
-          env:
-          - name: PORT
-            value: "8080"
-          - name: PRODUCT_CATALOG_SERVICE_ADDR
-            value: "productcatalogservice:3550"
-          - name: CURRENCY_SERVICE_ADDR
-            value: "currencyservice:7000"
-          - name: CART_SERVICE_ADDR
-            value: "cartservice:7070"
-          - name: RECOMMENDATION_SERVICE_ADDR
-            value: "recommendationservice:8080"
-          - name: SHIPPING_SERVICE_ADDR
-            value: "shippingservice:50051"
-          - name: CHECKOUT_SERVICE_ADDR
-            value: "checkoutservice:5050"
-          - name: AD_SERVICE_ADDR
-            value: "adservice:9555"
-          resources:
-            requests:
-              cpu: 100m
-              memory: 64Mi
-            limits:
-              cpu: 200m
-              memory: 128Mi
+      - name: server
+        image: bensassiahmed/frontend:1
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          initialDelaySeconds: 10
+          httpGet:
+            path: "/_healthz"
+            port: 8080
+            httpHeaders:
+            - name: "Cookie"
+              value: "shop_session-id=x-readiness-probe"
+        livenessProbe:
+          initialDelaySeconds: 10
+          httpGet:
+            path: "/_healthz"
+            port: 8080
+            httpHeaders:
+            - name: "Cookie"
+              value: "shop_session-id=x-liveness-probe"
+        env:
+        - name: PORT
+          value: "8080"
+        - name: PRODUCT_CATALOG_SERVICE_ADDR
+          value: "productcatalogservice:3550"
+        - name: CURRENCY_SERVICE_ADDR
+          value: "currencyservice:7000"
+        - name: CART_SERVICE_ADDR
+          value: "cartservice:7070"
+        - name: RECOMMENDATION_SERVICE_ADDR
+          value: "recommendationservice:8080"
+        - name: SHIPPING_SERVICE_ADDR
+          value: "shippingservice:50051"
+        - name: CHECKOUT_SERVICE_ADDR
+          value: "checkoutservice:5050"
+        - name: AD_SERVICE_ADDR
+          value: "adservice:9555"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
 ---
 apiVersion: v1
 kind: Service
@@ -560,7 +551,6 @@ spec:
   - name: http
     port: 80
     targetPort: 8080
-
 ---
 apiVersion: apps/v1
 kind: Deployment
